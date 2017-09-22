@@ -11,6 +11,12 @@
     <properties>
         <dropwizard.core.version>0.8.5</dropwizard.core.version>
         <dropwizard.db.version>0.9.1</dropwizard.db.version>
+        <dropwizard.hibernate.jpa.2.1.api>1.0.0.Final</dropwizard.hibernate.jpa.2.1.api>
+        <dropwizard.hibernate>0.9.2</dropwizard.hibernate>
+        <dropwizard.configuration>1.0.6</dropwizard.configuration>
+        <dropwizard.assets>1.0.0</dropwizard.assets>
+        <dropwizard.migrations>1.1.0</dropwizard.migrations>
+        <dropwizard.views>1.1.0</dropwizard.views>
     </properties>
 
     <dependencies>
@@ -24,7 +30,49 @@
             <artifactId>dropwizard-db</artifactId>
             <version>${dropwizard.db.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <version>${dropwizard.hibernate.jpa.2.1.api}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-hibernate</artifactId>
+            <version>${dropwizard.hibernate}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-configuration</artifactId>
+            <version>${dropwizard.configuration}</version>
+         </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-assets</artifactId>
+            <version>${dropwizard.assets}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-migrations</artifactId>
+            <version>${dropwizard.migrations}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-views</artifactId>
+            <version>${dropwizard.views}</version>
+        </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

@@ -1,10 +1,12 @@
 package com.example.helloword;
 
+import com.example.helloword.core.Template;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import com.google.common.collect.ImmutableMap;
 import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.Valid;
@@ -50,8 +52,12 @@ public class HelloWorldConfiguration extends Configuration {
         this.defaultName = defaultName;
     }
 
+    public Template buildTemplate(){
+        return new Template(template,defaultName);
+    }
+
     @JsonProperty("database")
-    public DataSourceFactory getDatabase() {
+    public DataSourceFactory getDataSourceFactory() {
         return database;
     }
 
