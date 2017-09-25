@@ -2,6 +2,11 @@ package com.example.helloword;
 
 import com.example.helloword.cli.RenderCommand;
 import com.example.helloword.core.Person;
+import com.example.helloword.core.Template;
+import com.example.helloword.db.PersonDAO;
+import com.example.helloword.filter.DateRequiredFeature;
+import com.example.helloword.health.TemplateHealthCheck;
+import com.example.helloword.tasks.EchoTask;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
@@ -62,10 +67,14 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration>{
     }
 
     @Override
-    public void run(HelloWorldConfiguration helloWorldConfiguration, Environment environment) throws Exception {
+    public void run(HelloWorldConfiguration configuration, Environment environment) throws Exception {
 
-        
-
+        final PersonDAO dao = new PersonDAO(hibernateBundle.getSessionFactory());
+        final Template template= configuration.buildTemplate();
+        environment.healthChecks().register("template",new TemplateHealthCheck(template));
+        environment.admin().addTask(new EchoTask());
+        environment.jersey().register(DateRequiredFeature.class);
+        //environment.jersey().register(new AuthDynamicFeature(new BaseCredentialAuthFilter.Builder<User>()));
 
     }
 }
