@@ -17,6 +17,7 @@
         <dropwizard.assets>1.0.0</dropwizard.assets>
         <dropwizard.migrations>1.1.0</dropwizard.migrations>
         <dropwizard.views>1.1.0</dropwizard.views>
+        <dropwizard-auth>1.1.0</dropwizard-auth>
     </properties>
 
     <dependencies>
@@ -59,6 +60,11 @@
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-views</artifactId>
             <version>${dropwizard.views}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-auth</artifactId>
+            <version>${dropwizard-auth}</version>
         </dependency>
     </dependencies>
     <build>
